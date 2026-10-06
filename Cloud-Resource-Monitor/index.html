@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Resource Monitor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-cloud"></i>
+            <h1>Cloud Resource Monitor</h1>
+        </div>
+        <p class="description">Mock AWS Cloud Monitoring Dashboard</p>
+        <div class="system-status">
+            <span class="status-indicator online"></span>
+            System Online
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search resources...">
+            </div>
+            <button id="refreshBtn" class="btn btn-primary">
+                <i class="fas fa-sync-alt"></i> Refresh Data
+            </button>
+        </div>
+
+        <section class="summary-cards">
+            <div class="card summary-card">
+                <h3>EC2 Instances</h3>
+                <p id="ec2Count" class="count">0</p>
+            </div>
+            <div class="card summary-card">
+                <h3>S3 Buckets</h3>
+                <p id="s3Count" class="count">0</p>
+            </div>
+            <div class="card summary-card">
+                <h3>Lambda Functions</h3>
+                <p id="lambdaCount" class="count">0</p>
+            </div>
+            <div class="card summary-card">
+                <h3>Active Alerts</h3>
+                <p id="alertCount" class="count">0</p>
+            </div>
+        </section>
+
+        <section id="errorState" class="error-state hidden">
+            <i class="fas fa-exclamation-triangle"></i>
+            <p>Error loading data. Please check console or try again.</p>
+        </section>
+
+        <div id="dashboardContent">
+            <section class="resource-section">
+                <h2><i class="fas fa-server"></i> EC2 Instances</h2>
+                <div class="table-container">
+                    <table id="ec2Table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Instance ID</th>
+                                <th>Status</th>
+                                <th>CPU Utilization</th>
+                                <th>Region</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ec2Body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="resource-section">
+                <h2><i class="fas fa-database"></i> S3 Buckets</h2>
+                <div class="table-container">
+                    <table id="s3Table">
+                        <thead>
+                            <tr>
+                                <th>Bucket Name</th>
+                                <th>Region</th>
+                                <th>Storage Used</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="s3Body">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="resource-section">
+                <h2><i class="fas fa-code"></i> Lambda Functions</h2>
+                <div class="table-container">
+                    <table id="lambdaTable">
+                        <thead>
+                            <tr>
+                                <th>Function Name</th>
+                                <th>Runtime</th>
+                                <th>Invocations</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lambdaBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="resource-section">
+                <h2><i class="fas fa-bell"></i> Alerts</h2>
+                <div class="table-container">
+                    <table id="alertTable">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Message</th>
+                                <th>Severity</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="alertBody">
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

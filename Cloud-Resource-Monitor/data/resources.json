@@ -1,0 +1,121 @@
+{
+  "ec2": [
+    {
+      "name": "web-server-prod-01",
+      "id": "i-0abc1234def56789a",
+      "status": "running",
+      "cpu": "45%",
+      "region": "us-east-1"
+    },
+    {
+      "name": "web-server-prod-02",
+      "id": "i-0abc1234def56789b",
+      "status": "running",
+      "cpu": "62%",
+      "region": "us-east-1"
+    },
+    {
+      "name": "db-server-main",
+      "id": "i-0abc1234def56789c",
+      "status": "stopped",
+      "cpu": "0%",
+      "region": "us-west-2"
+    },
+    {
+      "name": "cache-server",
+      "id": "i-0abc1234def56789d",
+      "status": "running",
+      "cpu": "12%",
+      "region": "eu-central-1"
+    }
+  ],
+  "s3": [
+    {
+      "name": "prod-app-assets",
+      "region": "us-east-1",
+      "storage": "2.4 TB",
+      "status": "Active"
+    },
+    {
+      "name": "db-backups-daily",
+      "region": "us-west-2",
+      "storage": "15.8 TB",
+      "status": "Active"
+    },
+    {
+      "name": "user-uploads-temp",
+      "region": "eu-central-1",
+      "storage": "450 GB",
+      "status": "Warning"
+    },
+    {
+      "name": "legacy-logs-archive",
+      "region": "us-east-1",
+      "storage": "120 TB",
+      "status": "Active"
+    }
+  ],
+  "lambda": [
+    {
+      "name": "processImageUpload",
+      "runtime": "Node.js 18.x",
+      "invocations": "1.2M",
+      "status": "Active"
+    },
+    {
+      "name": "generateDailyReport",
+      "runtime": "Python 3.10",
+      "invocations": "30",
+      "status": "Active"
+    },
+    {
+      "name": "cleanTempData",
+      "runtime": "Go 1.x",
+      "invocations": "720",
+      "status": "Failing"
+    },
+    {
+      "name": "syncUserProfiles",
+      "runtime": "Node.js 16.x",
+      "invocations": "45K",
+      "status": "Active"
+    }
+  ],
+  "alerts": [
+    {
+      "type": "CPU High",
+      "message": "web-server-prod-02 CPU utilization exceeded 60%",
+      "severity": "Warning",
+      "time": "10 minutes ago",
+      "status": "Open"
+    },
+    {
+      "type": "Lambda Error",
+      "message": "cleanTempData function has 15% error rate",
+      "severity": "Critical",
+      "time": "1 hour ago",
+      "status": "Open"
+    },
+    {
+      "type": "Storage Warning",
+      "message": "user-uploads-temp is approaching quota",
+      "severity": "Warning",
+      "time": "2 hours ago",
+      "status": "Acknowledged"
+    },
+    {
+      "type": "Instance Stopped",
+      "message": "db-server-main stopped unexpectedly",
+      "severity": "Critical",
+      "time": "5 hours ago",
+      "status": "Resolved"
+    },
+    {
+      "type": "Cost Alert",
+      "message": "Monthly budget exceeded 80%",
+      "severity": "Info",
+      "time": "1 day ago",
+      "status": "Open"
+    }
+  ]
+}
